@@ -1,0 +1,233 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CVJoyMAUI.PageGaugesFast"
+             NavigationPage.HasNavigationBar="false"
+             Title="CVJoy Gauges Fast">
+
+    <Grid BackgroundColor="#ff000000" RowSpacing="0" ColumnSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10*" /> <!--infos-->
+            <RowDefinition Height="90*" /> <!-- gauges-->
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="63*" />
+            <ColumnDefinition Width="37*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- TYRES SLIP: -->
+        <BoxView x:Name="slipFL" Grid.Row="0"  Grid.Column="0" Grid.RowSpan="2"
+            WidthRequest="170"
+            HeightRequest="170"
+            HorizontalOptions="Start" 
+            VerticalOptions="Start" 
+             Color="Red" />
+        <BoxView x:Name="slipFR" Grid.Row="0"  Grid.Column="1"  Grid.RowSpan="2"
+            WidthRequest="170"
+            HeightRequest="170"
+            HorizontalOptions="End" 
+            VerticalOptions="Start" 
+             Color="Red" />
+        <BoxView x:Name="slipRL" Grid.Row="1"  Grid.Column="0" 
+            WidthRequest="170"
+            HeightRequest="170"
+            HorizontalOptions="Start" 
+            VerticalOptions="End" 
+             Color="Red" />
+        <BoxView x:Name="slipRR" Grid.Row="1"  Grid.Column="1" 
+            WidthRequest="170"
+            HeightRequest="170"
+            HorizontalOptions="End" 
+            VerticalOptions="End" 
+             Color="Red" />
+
+
+
+        <!-- DISTANCE : -->
+        <Grid Grid.Row="0"  Grid.Column="0" Grid.ColumnSpan="3" HeightRequest="48" BackgroundColor="Transparent" RowSpacing="0" ColumnSpacing="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="30*" />
+                <ColumnDefinition Width="20*" />
+
+                <ColumnDefinition Width="20*" />
+                <ColumnDefinition Width="20*" />
+
+                <ColumnDefinition Width="20*" />
+                <ColumnDefinition Width="20*" />
+                <ColumnDefinition Width="20*" />
+
+                <ColumnDefinition Width="20*" />
+                <ColumnDefinition Width="40*" />
+            </Grid.ColumnDefinitions>
+            <Label Grid.Row="0"  Grid.Column="0" 
+                x:Name="Distance"
+                Text="99.9"
+                TextColor="#ffffffff"
+                FontSize="30"
+                HorizontalTextAlignment="End"
+                VerticalTextAlignment="Center"
+                />
+            <Label Grid.Row="0"  Grid.Column="1"  
+                Text=" KMs"
+                TextColor="#8D6C2A"
+                FontSize="30"
+                HorizontalTextAlignment="Start"
+                VerticalTextAlignment="Center"
+                />
+
+            <Label  Grid.Row="0"  Grid.Column="2" 
+                Text="Lap  "
+                TextColor="#8D6C2A"
+                FontSize="30"
+                HorizontalTextAlignment="End"
+                VerticalTextAlignment="Center"
+                />
+            <Label Grid.Row="0"  Grid.Column="3" 
+                x:Name="Lap"
+                Text="0 / 99"
+                TextColor="#ffffffff"
+                FontSize="30"
+                HorizontalTextAlignment="Start"
+                VerticalTextAlignment="Center"
+                />
+
+            <Label Grid.Row="0"  Grid.Column="4" 
+                Text="Fuel"
+                TextColor="#8D6C2A"
+                FontSize="30"
+                HorizontalTextAlignment="End"
+                VerticalTextAlignment="Center"
+                />
+            <Label Grid.Row="0"  Grid.Column="5" 
+                x:Name="FuelKMs"
+                Text="99"
+                TextColor="#ffffffff"
+                FontSize="30"
+                HorizontalTextAlignment="End"
+                VerticalTextAlignment="Center"
+                />
+            <Label Grid.Row="0"  Grid.Column="6" 
+                Text=" KMs"
+                TextColor="#8D6C2A"
+                FontSize="30"
+                HorizontalTextAlignment="Start"
+                VerticalTextAlignment="Center"
+                />
+
+
+            <Label Grid.Row="0"  Grid.Column="7" 
+                x:Name="FuelAvg"
+                Text="99"
+                TextColor="#ffffffff"
+                FontSize="30"
+                HorizontalTextAlignment="End"
+                VerticalTextAlignment="Center"
+                />
+            <Label Grid.Row="0"  Grid.Column="8" 
+                Text=" l/100KMs"
+                TextColor="#8D6C2A"
+                FontSize="30"
+                HorizontalTextAlignment="Start"
+                VerticalTextAlignment="Center"
+                />
+        </Grid>
+
+
+        <!-- RPM : -->
+        <AbsoluteLayout  Grid.Row="1"  Grid.Column="0"
+                 x:Name="rpmAbsolute"
+                 VerticalOptions="FillAndExpand"
+                 HorizontalOptions ="FillAndExpand"                
+                 SizeChanged="rpmAbsolute_SizeChanged"
+        />
+
+        <!-- SPEED : -->
+        <AbsoluteLayout Grid.Row="1"  Grid.Column="1"
+                 x:Name="speedAbsolute"
+                 VerticalOptions="FillAndExpand"
+                 HorizontalOptions ="FillAndExpand"
+                 SizeChanged="speedAbsolute_SizeChanged"
+        />
+
+        <!-- GEAR : -->
+        <Label Grid.Row="1"  Grid.Column="0"
+               x:Name="gear"
+               Text="N"
+               TextColor="White"
+               FontSize="85"
+               FontAttributes="Bold"
+               HorizontalOptions="End"
+               VerticalOptions="Start" />
+
+
+        <!-- PEDALS : -->
+        <Grid x:Name="gridPedals" Grid.Row="1"  Grid.Column="1" RowSpacing="0" ColumnSpacing="4" Margin="11,130,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="4" />
+                <ColumnDefinition Width="1" />
+                <ColumnDefinition Width="4" />
+                <ColumnDefinition Width="1" />
+                <ColumnDefinition Width="4" />
+            </Grid.ColumnDefinitions>
+        </Grid>
+
+
+        <!-- TURBO : -->
+        <Grid Grid.Row="1" Grid.Column="0" HorizontalOptions="FillAndExpand"  VerticalOptions="End"  RowSpacing="4" ColumnSpacing="0" Margin="180,0,180,0" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30" />
+                <RowDefinition Height="1" />
+                <RowDefinition Height="5" />
+                <RowDefinition Height="1" />
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0"  Grid.Column="0"  
+                Text="Turbo"
+                TextColor="White"
+                FontSize="19"
+                HorizontalTextAlignment="Center"
+                VerticalTextAlignment="End"
+            />
+            <Label Grid.Row="0"  Grid.Column="0"  
+                Text="0"
+                TextColor="White"
+                FontSize="19"
+                HorizontalTextAlignment="Start"
+                VerticalTextAlignment="End"
+            />
+            <Label Grid.Row="0"  Grid.Column="0"  
+                x:Name="turboMax"
+                Text="1.2"
+                TextColor="White"
+                FontSize="19"
+                HorizontalTextAlignment="End"
+                VerticalTextAlignment="End"
+            />
+            <BoxView Grid.Row="1" Grid.Column="0" 
+                x:Name="lineTurbo"
+                 HorizontalOptions ="Fill" 
+                 VerticalOptions ="Fill" 
+                 Color="White"
+                />
+            <BoxView Grid.Row="2" Grid.Column="0" 
+                x:Name="turbo"
+                 VerticalOptions ="Fill" 
+                 WidthRequest="250"
+                 HorizontalOptions="Start"
+                 Color="Yellow"
+                />
+            <BoxView Grid.Row="3" Grid.Column="0" 
+                 HorizontalOptions ="Fill" 
+                 VerticalOptions ="Fill" 
+                 Color="White"
+                />
+        </Grid>
+
+        <ImageButton Grid.Row="1"  Grid.Column="1"  Margin="50,2,0,0"
+                Clicked="Button_Clicked"
+                Source="dashlights.png"
+                VerticalOptions="Center"
+                HorizontalOptions="Start"
+                />
+
+    </Grid>
+</ContentPage>

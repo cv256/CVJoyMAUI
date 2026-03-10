@@ -1,0 +1,256 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CVJoyMAUI.PageDigital"
+             NavigationPage.HasNavigationBar="false"
+             Title="CVJoy Digital">
+
+    <Grid BackgroundColor="Blue" RowSpacing="0" ColumnSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50*" />
+            <RowDefinition Height="38*" />
+            <RowDefinition Height="32*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20*" />
+            <ColumnDefinition Width="30*" />
+            <ColumnDefinition Width="20*" />
+        </Grid.ColumnDefinitions>
+
+
+        <!-- TIRES : -->
+        <Grid x:Name="GridTires" Grid.Row="0" Grid.Column="0" Grid.RowSpan="3" Grid.ColumnSpan="3" BackgroundColor="Black" RowSpacing="5" ColumnSpacing="5" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60*" />
+                <RowDefinition Height="40*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10*" />
+                <ColumnDefinition Width="50*" />
+                <ColumnDefinition Width="50*" />
+                <ColumnDefinition Width="10*" />
+            </Grid.ColumnDefinitions>
+
+            <BoxView Grid.Row="0"  Grid.Column="0" Grid.ColumnSpan="2" Color="Red" x:Name="slipFL"/>
+            <BoxView Grid.Row="0"  Grid.Column="2" Grid.ColumnSpan="2" Color="Red" x:Name="slipFR"/>
+            <BoxView Grid.Row="1"  Grid.Column="0" Grid.ColumnSpan="2" Color="Red" x:Name="slipRL"/>
+            <BoxView Grid.Row="1"  Grid.Column="2" Grid.ColumnSpan="2" Color="Red" x:Name="slipRR"/>
+
+            <BoxView Grid.Row="0"  Grid.Column="0" 
+                 x:Name="dirtFL"
+                 Color="Gray" 
+                 HorizontalOptions ="Start" 
+                 WidthRequest="25" 
+                
+        />
+            <BoxView Grid.Row="0"  Grid.Column="3" 
+                 x:Name="dirtFR"
+                 Color="Gray" 
+                 HorizontalOptions ="End" 
+                 WidthRequest="25" 
+        />
+            <BoxView Grid.Row="1"  Grid.Column="0" 
+                 x:Name="dirtRL"
+                 Color="Gray" 
+                 HorizontalOptions ="Start" 
+                 WidthRequest="25" 
+        />
+            <BoxView Grid.Row="1"  Grid.Column="3" 
+                 x:Name="dirtRR"
+                 Color="Gray" 
+                 HorizontalOptions ="End" 
+                 WidthRequest="25" 
+        />
+        </Grid>
+
+
+        <!-- RPM : -->
+        <BoxView Grid.Row="0"  Grid.Column="0" Grid.ColumnSpan="3" 
+                 x:Name="rpm"
+                 VerticalOptions="Fill"
+                 HorizontalOptions ="Center" 
+                 WidthRequest="1150"
+                 Color="#ff00ff00" 
+        />
+        <Label Grid.Row="0"  Grid.Column="0" Grid.ColumnSpan="3"
+                 x:Name="rpmText"
+                Text="0.000"
+                TextColor="#ffffffff"
+                FontSize="50"
+                HorizontalOptions="Center"
+                VerticalOptions="End"
+         />
+
+
+        <!-- INFOs: -->
+        <Grid Grid.Row="1" Grid.Column="0" Grid.RowSpan="2" BackgroundColor="Transparent" RowSpacing="5" ColumnSpacing="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50*" />
+                <RowDefinition Height="50*" />
+                <RowDefinition Height="50*" />
+                <RowDefinition Height="50*" />
+                <RowDefinition Height="50*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50*" />
+                <ColumnDefinition Width="50*" />
+                <ColumnDefinition Width="50*" />
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Row="0" Grid.Column="0" 
+                Text="Time"
+                TextColor="#ff80c0ff"
+                FontSize="25"
+                VerticalTextAlignment="Center"
+                />
+            <Label Grid.Row="0" Grid.Column="1" 
+                x:Name="lbTime"
+                Text="23:59"
+                TextColor="#ffffffff"
+                FontSize="40"
+                VerticalTextAlignment="Center"
+                HorizontalTextAlignment="End"
+                />
+
+            <Label Grid.Row="1" Grid.Column="0" 
+                Text="Lap" 
+                TextColor="#ff80c0ff"
+                FontSize="25"
+                VerticalTextAlignment="Center"
+                />
+            <Label Grid.Row="1" Grid.Column="1" 
+                x:Name="Lap" 
+                Text="0 / 99"
+                TextColor="#ffffffff"
+                FontSize="40"
+                VerticalTextAlignment="Center"
+                HorizontalTextAlignment="End"
+                />
+            
+            <Label Grid.Row="2" Grid.Column="0" 
+                Text="Distance"
+                TextColor="#ff80c0ff"
+                FontSize="25"
+                VerticalTextAlignment="Center"
+                />
+            <Label Grid.Row="2" Grid.Column="1" 
+                x:Name="Distance"
+                Text="99.9"
+                TextColor="#ffffffff"
+                FontSize="40"
+                VerticalTextAlignment="Center"
+                HorizontalTextAlignment="End"
+                />
+            <Label Grid.Row="2" Grid.Column="2" 
+                Text="KMs"
+                TextColor="#ff80c0ff"
+                FontSize="25"
+                VerticalTextAlignment="Center"
+                />
+
+            <Label Grid.Row="3" Grid.Column="0" 
+                Text="Fuel"
+                TextColor="#ff80c0ff"
+                FontSize="25"
+                VerticalTextAlignment="Center"
+                />
+            <Label Grid.Row="3" Grid.Column="1" 
+                x:Name="FuelKMs"
+                Text="99"
+                TextColor="#ffffffff"
+                FontSize="40"
+                VerticalTextAlignment="Center"
+                HorizontalTextAlignment="End"
+                />
+            <Label Grid.Row="3" Grid.Column="2" 
+                Text="KMs"
+                TextColor="#ff80c0ff"
+                FontSize="25"
+                VerticalTextAlignment="Center"
+                />
+
+            <Label Grid.Row="4" Grid.Column="0" 
+                Text="Economy"
+                TextColor="#ff80c0ff"
+                FontSize="25"
+                VerticalTextAlignment="Center"
+                />
+            <Label Grid.Row="4" Grid.Column="1" 
+                x:Name="FuelAvg"
+                Text="99"
+                TextColor="#ffffffff"
+                FontSize="40"
+                VerticalTextAlignment="Center"
+                HorizontalTextAlignment="End"
+                />
+            <Label Grid.Row="4" Grid.Column="2" 
+                Text="l/100KMs"
+                TextColor="#ff80c0ff"
+                FontSize="25"
+                VerticalTextAlignment="Center"
+                />
+        </Grid>
+
+
+
+        <!-- SPEED : -->
+        <Label Grid.Row="1"  Grid.Column="1" 
+                Text="Speed"
+                TextColor="#ff80c0ff"
+                FontSize="30"
+                HorizontalOptions="Center"
+                VerticalOptions="Start"
+                />
+        <Label Grid.Row="1"  Grid.Column="1" Margin="0,-22,0,0"
+                x:Name="speed"
+                Text="000"
+                TextColor="White"
+                FontSize="230"
+                FontAttributes="Bold"
+                HorizontalOptions="CenterAndExpand"
+                VerticalOptions="End"
+                />
+
+        <!-- GEAR : -->
+        <Label Grid.Row="2"  Grid.Column="1" Margin="0,0,0,0"
+               x:Name="gear"
+               Text="N"
+               TextColor="White"
+               FontSize="140"
+               FontAttributes="Bold"
+               HorizontalOptions="CenterAndExpand"
+               VerticalOptions="Start" />
+        <Label Grid.Row="2"  Grid.Column="1"
+               x:Name="gearAuto"
+               Text="Gear"
+               TextColor="#ff80c0ff"
+               FontSize="30"
+               HorizontalOptions="Center"
+               VerticalOptions="End"
+               />
+
+
+        <!-- PEDALS : -->
+        <Grid x:Name="gridPedals" Grid.Row="1" Grid.Column="2" Grid.RowSpan="2" RowSpacing="0" ColumnSpacing="8" HorizontalOptions="Center" Margin="0,0,0,0" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="1" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="1" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="1" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+        </Grid>
+
+
+        <ImageButton Grid.Row="2"  Grid.Column="1" Margin="0,-5,0,0" 
+                Clicked="Button_Clicked"
+                Source="dashlights.png"
+                VerticalOptions="Start"
+                HorizontalOptions="Center"
+                />
+
+    </Grid>
+
+</ContentPage>

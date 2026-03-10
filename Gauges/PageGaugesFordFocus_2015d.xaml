@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CVJoyMAUI.PageGaugesFordFocus_2015d"
+             NavigationPage.HasNavigationBar="false"
+             Title="Ford Focus 2015 Diesel">
+
+    <Grid BackgroundColor="Black" RowSpacing="0" ColumnSpacing="0">
+        <Grid.RowDefinitions>
+            <!--empty-->
+            <RowDefinition Height="*"  />
+            <!-- image -->
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!-- IMG: -->
+
+        <Image x:Name="img" Grid.Row="1" Aspect="AspectFit"  HorizontalOptions="Center" VerticalOptions="End" Source="fordfocus2015d.png"    />
+
+        <AbsoluteLayout Grid.Row="1" BackgroundColor="Transparent"   >
+
+
+
+            <!-- TIME : -->
+            <Label  x:Name="lbTime" AbsoluteLayout.LayoutBounds="0.402 , 0.02, AutoSize, AutoSize" AbsoluteLayout.LayoutFlags="PositionProportional"               
+               Text="23:59"
+               TextColor="White"
+               FontSize="22"
+               />
+
+            <!-- GEAR : -->
+            <Label x:Name="gear"  AbsoluteLayout.LayoutBounds="0.576 , 0.01, AutoSize, AutoSize" AbsoluteLayout.LayoutFlags="PositionProportional"               
+               Text="N"
+               TextColor="White"
+               FontSize="28"
+               FontAttributes="Bold"
+                />
+
+
+            <!-- Distance : -->
+            <Label x:Name="lbDistance" AbsoluteLayout.LayoutBounds="0.402 , 0.34, AutoSize, AutoSize" AbsoluteLayout.LayoutFlags="PositionProportional"               
+               Text="0000.0"
+               TextColor="White"
+               FontSize="22"
+/>
+
+            <ImageButton AbsoluteLayout.LayoutBounds="0.58 , 0.355, AutoSize, AutoSize" AbsoluteLayout.LayoutFlags="PositionProportional" Clicked="Button_Clicked" Source="dashlights.png"/>
+
+            <!-- RPM : -->
+            <AbsoluteLayout x:Name="rpmAbsolute" AbsoluteLayout.LayoutBounds="0.14 , 0.59, .24, .69" AbsoluteLayout.LayoutFlags="All" SizeChanged="rpmAbsolute_SizeChanged" />
+
+            <!-- SPEED : -->
+            <AbsoluteLayout x:Name="speedAbsolute" AbsoluteLayout.LayoutBounds="0.855 , 0.59, .24, .69" AbsoluteLayout.LayoutFlags="All" SizeChanged="speedAbsolute_SizeChanged" />
+
+            <Label AbsoluteLayout.LayoutBounds="0.472 , 0.144, AutoSize, AutoSize" AbsoluteLayout.LayoutFlags="PositionProportional"     
+                 x:Name="speedText"
+                Text="000"
+                TextColor="White"
+                FontSize="53"
+                FontAttributes="None"
+                HorizontalOptions="Center"
+                VerticalOptions="Start"
+         />
+
+        </AbsoluteLayout>
+
+    </Grid>
+</ContentPage>
