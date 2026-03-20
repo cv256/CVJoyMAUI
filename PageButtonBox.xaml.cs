@@ -48,7 +48,8 @@
                     ContentLayout = new Button.ButtonContentLayout(Button.ButtonContentLayout.ImagePosition.Top, -2),
                     ImageSource = conf[4]
                 }; // <Button Text="Calibrate"  Grid.Row="0" Grid.Column="4"   ContentLayout="Top,-2" Padding="0,-17,0,0"    FontSize="28" FontAttributes="Bold" ImageSource="steer.png" BackgroundColor = "LightSteelBlue" BorderColor = "DarkBlue" BorderWidth=" 9" CornerRadius="20" />
-                b.Clicked += ButtonBox_Clicked;
+                b.Pressed += Pressed;
+                b.Released += Released;
                 grid1.Add(b, pColumn, pRow);
             }
 
@@ -56,14 +57,17 @@
             Grid.SetColumn(button1, 4);
         }
 
+        private void Pressed(object? sender, EventArgs e)
+        {
+            (Application.Current as CVJoyMAUI.App).udpReceiver.SendButtonBoxCommand((sender as Button).Text, true);
+        }
+        private void Released(object? sender, EventArgs e)
+        {
+            (Application.Current as CVJoyMAUI.App).udpReceiver.SendButtonBoxCommand((sender as Button).Text, false);
+        }
         private void Button_Clicked(object sender, EventArgs e)
         {
             (Application.Current as CVJoyMAUI.App).AskForPage();
-        }
-
-        private void ButtonBox_Clicked(object sender, EventArgs e)
-        {
-            (Application.Current as CVJoyMAUI.App).udpReceiver.SendButtonBoxCommand((sender as Button).Text);
         }
 
     }

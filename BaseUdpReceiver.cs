@@ -243,10 +243,10 @@ public class BaseUdpReceiver
     }
 
 
-    public void SendButtonBoxCommand(string pText)
+    public void SendButtonBoxCommand(string pText, bool pPressed)
     {
         byte[] sendBuffer = new byte[1 + pText.Length];
-        sendBuffer[0] = 253;
+        sendBuffer[0] = (byte)(pPressed ? 253: 254);
         for (int i = 0; i < pText.Length; i++)
         {
             sendBuffer[i + 1] = (byte)pText[i];
