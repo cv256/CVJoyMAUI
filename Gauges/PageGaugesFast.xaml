@@ -136,17 +136,13 @@
         <!-- RPM : -->
         <AbsoluteLayout  Grid.Row="1"  Grid.Column="0"
                  x:Name="rpmAbsolute"
-                 VerticalOptions="FillAndExpand"
-                 HorizontalOptions ="FillAndExpand"                
                  SizeChanged="rpmAbsolute_SizeChanged"
         />
 
         <!-- SPEED : -->
         <AbsoluteLayout Grid.Row="1"  Grid.Column="1"
                  x:Name="speedAbsolute"
-                 VerticalOptions="FillAndExpand"
-                 HorizontalOptions ="FillAndExpand"
-                 SizeChanged="speedAbsolute_SizeChanged"
+                 SizeChanged="speedAbsolute_SizeChanged"                        
         />
 
         <!-- GEAR : -->

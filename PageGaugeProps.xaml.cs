@@ -1,11 +1,7 @@
-﻿using System;
-
-
-
-
-namespace CVJoyMAUI
+﻿namespace CVJoyMAUI
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
+
     public partial class PageGaugeProps : ContentPage
     {
         Gauge gauge;

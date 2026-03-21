@@ -1,7 +1,4 @@
-﻿using System;
-
-
-namespace CVJoyMAUI
+﻿namespace CVJoyMAUI
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PageGaugesBmwM2 : ContentPage
@@ -25,7 +22,7 @@ namespace CVJoyMAUI
 
         private void UdpReceiver_Updated(BaseUdpReceiver udpReceiver, Boolean extra)
         {
-            Device.BeginInvokeOnMainThread(() =>
+            (Application.Current as CVJoyMAUI.App).Dispatcher.Dispatch(() =>
             {
                 this.BatchBegin();
                 lbTime.Text = DateTime.Now.ToString("H:mm");

@@ -1,9 +1,4 @@
-﻿using System;
-
-
-
-
-namespace CVJoyMAUI
+﻿namespace CVJoyMAUI
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PageGaugesDiesel : ContentPage
@@ -25,7 +20,7 @@ namespace CVJoyMAUI
 
         private void UdpReceiver_Updated(BaseUdpReceiver udpReceiver, Boolean extra)
         {
-            Device.BeginInvokeOnMainThread(() =>
+            (Application.Current as CVJoyMAUI.App).Dispatcher.Dispatch(() =>
             {
                 this.BatchBegin();
                 slipFL.Color = udpReceiver.Info.slipFL;
@@ -79,6 +74,7 @@ namespace CVJoyMAUI
                 225, 495, Gauge.enumGaugeRadiusSize.Fit,
                 Colors.OrangeRed);
         }
+
         private void speedAbsolute_SizeChanged(object sender, EventArgs e)
         {
             speedGauge.Init(0, 240, 240,
@@ -90,5 +86,7 @@ namespace CVJoyMAUI
                 225, 495, Gauge.enumGaugeRadiusSize.Fit,
                 Colors.OrangeRed);
         }
+
     }
+
 }

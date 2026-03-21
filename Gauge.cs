@@ -1,12 +1,11 @@
-﻿using System;
-using Color = Microsoft.Maui.Graphics.Color;
+﻿using Color = Microsoft.Maui.Graphics.Color;
 
 namespace CVJoyMAUI
 {
     public class Gauge
     {
-        public AbsoluteLayout absoluteLayout;
-        BoxView needle;
+        public Microsoft.Maui.Controls.AbsoluteLayout absoluteLayout;
+        Label needle;
         public int valueMin;
         public int valueMax;
         public int angleMin;
@@ -16,7 +15,7 @@ namespace CVJoyMAUI
         public enumGaugeRadiusSize radiusSize;
         public int valueMode2;
 
-        public Gauge(AbsoluteLayout pAbsoluteLayout, int pvalueMode2 = 0)
+        public Gauge(Microsoft.Maui.Controls.AbsoluteLayout pAbsoluteLayout, int pvalueMode2 = 0)
         {
             absoluteLayout = pAbsoluteLayout;
             valueMode2 = pvalueMode2;
@@ -47,101 +46,122 @@ namespace CVJoyMAUI
             needleWidth = pNeedleWidth;
             radiusSize = pRadiusSize;
 
-            absoluteLayout.Children.Clear();
-
-            // Get the center and radius of the AbsoluteLayout
-            Point center = new Point(absoluteLayout.Width / 2, absoluteLayout.Height / 2);
-            Double radius;
-            if (radiusSize != enumGaugeRadiusSize.Fit)
+            // tive de usar o Dispatcher porque no Android 6 nao mostrava os Gauges. E o IA diz: para garantir que o código que acede ao absoluteLayout seja executado na thread correta, porque esta função Init pode ser chamada a partir de outra thread (ex: a thread do timer que actualiza os valores do gauge):
+            (Application.Current as CVJoyMAUI.App).Dispatcher.Dispatch(() =>
             {
-                if (absoluteLayout.Width > absoluteLayout.Height)
+
+                absoluteLayout.BatchBegin();
+
+                absoluteLayout.Children.Clear();
+
+                // Get the center and radius of the AbsoluteLayout
+                Point center = new Point(absoluteLayout.Width / 2, absoluteLayout.Height / 2);
+                Double radius;
+                if (radiusSize != enumGaugeRadiusSize.Fit)
                 {
-                    radius = 0.5 * absoluteLayout.Width;
-                    if (radiusSize == enumGaugeRadiusSize.ExpandStart)
+                    if (absoluteLayout.Width > absoluteLayout.Height)
                     {
-                        center.Y = radius;
+                        radius = 0.5 * absoluteLayout.Width;
+                        if (radiusSize == enumGaugeRadiusSize.ExpandStart)
+                        {
+                            center.Y = radius;
+                        }
+                        else if (radiusSize == enumGaugeRadiusSize.ExpandEnd)
+                        {
+                            center.Y = absoluteLayout.Height - radius;
+                        }
                     }
-                    else if (radiusSize == enumGaugeRadiusSize.ExpandEnd)
+                    else
                     {
-                        center.Y = absoluteLayout.Height - radius;
+                        radius = 0.5 * absoluteLayout.Height;
+                        if (radiusSize == enumGaugeRadiusSize.ExpandStart)
+                        {
+                            center.X = radius;
+                        }
+                        else if (radiusSize == enumGaugeRadiusSize.ExpandEnd)
+                        {
+                            center.X = absoluteLayout.Width - radius;
+                        }
                     }
                 }
                 else
                 {
-                    radius = 0.5 * absoluteLayout.Height;
-                    if (radiusSize == enumGaugeRadiusSize.ExpandStart)
-                    {
-                        center.X = radius;
-                    }
-                    else if (radiusSize == enumGaugeRadiusSize.ExpandEnd)
-                    {
-                        center.X = absoluteLayout.Width - radius;
-                    }
+                    radius = 0.5 * Math.Min(absoluteLayout.Width, absoluteLayout.Height);
                 }
-            }
-            else
-            {
-                radius = 0.5 * Math.Min(absoluteLayout.Width, absoluteLayout.Height);
-            }
 
-            if (valueMode2 == 0)
-            {
-                drawCircle(center, radius, pAngleMin, pAngleMax, pValueMin, pValueMax, ticks1Color, ticks2Color, ticks3Color);
-            }
-            else
-            {
-                int angleMid = (pAngleMax - pAngleMin) / 2;
-                drawCircle(center, radius, pAngleMin, pAngleMin + angleMid, pValueMin, valueMode2, ticks1Color, ticks2Color, ticks3Color);
-                drawCircle(center, radius, pAngleMin + angleMid, pAngleMax, valueMode2, pValueMax, ticks1Color, ticks2Color, ticks3Color);
-            }
-
-            // red line:
-            if (pValueRedLine < valueMax)
-            {
-                double redLineAngle = GetAngle(pValueRedLine);
-                Double redLineX = center.X + radius * Math.Sin(redLineAngle / 180 * Math.PI);
-                Double redLineY = center.Y - radius * Math.Cos(redLineAngle / 180 * Math.PI);
-                absoluteLayout.Children.Add(new BoxView
+                if (valueMode2 == 0)
                 {
-                    AnchorY = 0,
-                    TranslationX = redLineX,
-                    TranslationY = redLineY,
-                    WidthRequest = 3,
-                    HeightRequest = radius * .75,
-                    Rotation = redLineAngle,
-                    Color = Colors.Red
-                });
-            }
+                    drawCircle(center, radius, pAngleMin, pAngleMax, pValueMin, pValueMax, ticks1Color, ticks2Color, ticks3Color);
+                }
+                else
+                {
+                    int angleMid = (pAngleMax - pAngleMin) / 2;
+                    drawCircle(center, radius, pAngleMin, pAngleMin + angleMid, pValueMin, valueMode2, ticks1Color, ticks2Color, ticks3Color);
+                    drawCircle(center, radius, pAngleMin + angleMid, pAngleMax, valueMode2, pValueMax, ticks1Color, ticks2Color, ticks3Color);
+                }
 
-            // needle:
-            int needleCenterRadius = 7 + (int)(needleWidth * 2);
-            Button needleCenterBox = new Button
-            {
-                TranslationX = center.X - needleCenterRadius,
-                TranslationY = center.Y - needleCenterRadius,
-                WidthRequest = needleCenterRadius * 2,
-                HeightRequest = needleCenterRadius * 2,
-                CornerRadius = needleCenterRadius,
-                BackgroundColor = needleCenterColor
-            };
-            absoluteLayout.Children.Add(needleCenterBox);
-            needleCenterBox.Clicked += NeedleCenterBox_Clicked;
+                // red line:
+                if (pValueRedLine < valueMax)
+                {
+                    double redLineAngle = GetAngle(pValueRedLine);
+                    Double redLineX = center.X + radius * Math.Sin(redLineAngle / 180 * Math.PI);
+                    Double redLineY = center.Y - radius * Math.Cos(redLineAngle / 180 * Math.PI);
+                    absoluteLayout.Children.Add(new BoxView
+                    {
+                        AnchorY = 0,
+                        TranslationX = redLineX,
+                        TranslationY = redLineY,
+                        WidthRequest = 3,
+                        HeightRequest = radius * .75,
+                        Rotation = redLineAngle,
+                        Color = Colors.Red
+                    });
+                }
 
-            const Double needleOffset = 0.85;
-            Double needleHeight = .9 * radius;
-            needle = new BoxView // a needle é um rectangulo estreito e alto.  O centro de rotação (Anchor) é quase no o topo desse rectangulo.
-            {
-                AnchorX = .5,
-                AnchorY = needleOffset,
-                TranslationX = center.X - .5 * needleWidth,
-                TranslationY = center.Y - needleOffset * needleHeight,
-                WidthRequest = needleWidth,
-                HeightRequest = needleHeight,
-                Rotation = angleMin,
-                Color = needleColor,
-                CornerRadius = 3
-            };
-            absoluteLayout.Children.Add(needle);
+                // needle:
+                int needleCenterRadius = 7 + (int)(needleWidth * 2);
+                Button needleCenterBox = new Button
+                {
+                    TranslationX = center.X - needleCenterRadius,
+                    TranslationY = center.Y - needleCenterRadius,
+                    WidthRequest = needleCenterRadius * 2,
+                    HeightRequest = needleCenterRadius * 2,
+                    CornerRadius = needleCenterRadius,
+                    BackgroundColor = needleCenterColor
+                };
+                absoluteLayout.Children.Add(needleCenterBox);
+                needleCenterBox.Clicked += NeedleCenterBox_Clicked;
+
+                const Double needleOffset = 0.85;
+                Double needleHeight = .9 * radius;
+                //needle = new BoxView // a needle é um rectangulo estreito e alto.  O centro de rotação (Anchor) é quase no o topo desse rectangulo.
+                //{
+                //    WidthRequest = needleWidth,
+                //    HeightRequest = needleHeight,
+                //    TranslationX = center.X - .5 * needleWidth,
+                //    TranslationY = center.Y - needleOffset * needleHeight,
+                //    AnchorX = .5,
+                //    AnchorY = needleOffset,
+                //    Rotation = angleMin,
+                //    Color = needleColor,
+                //    CornerRadius = 3
+                //};
+                // tive de usar Label em vez de BoxView porque o BoxView no Android 6 ignorava os Anchor e fazia a Rotation fora do lugar. 
+                needle = new Label // a needle é um rectangulo estreito e alto.  O centro de rotação (Anchor) é quase no o topo desse rectangulo.
+                {
+                    WidthRequest = needleWidth,
+                    HeightRequest = needleHeight,
+                    TranslationX = center.X - .5 * needleWidth,
+                    TranslationY = center.Y - needleOffset * needleHeight,
+                    AnchorY = needleOffset,
+                    Rotation = angleMin,
+                    BackgroundColor=needleColor
+                };
+
+                absoluteLayout.Children.Add(needle);
+
+                absoluteLayout.BatchCommit();
+            }); // ...Dispatcher.Dispatch
         }
 
 

@@ -136,9 +136,7 @@
         <!-- RPM : -->
         <AbsoluteLayout  Grid.Row="1"  Grid.Column="0" Grid.RowSpan="2"
                  x:Name="rpmAbsolute"
-                 VerticalOptions="FillAndExpand"
-                 HorizontalOptions ="FillAndExpand"                
-                 SizeChanged="rpmAbsolute_SizeChanged"
+                SizeChanged="rpmAbsolute_SizeChanged"
         />
         <Label Grid.Row="1"  Grid.Column="0" Grid.RowSpan="2"
                  x:Name="rpmText"
@@ -152,9 +150,7 @@
 
         <!-- SPEED : -->
         <AbsoluteLayout Grid.Row="1"  Grid.Column="2" Grid.RowSpan="2"
-                 x:Name="speedAbsolute"
-                 VerticalOptions="FillAndExpand"
-                 HorizontalOptions ="FillAndExpand"
+                 x:Name="speedAbsolute" 
                  SizeChanged="speedAbsolute_SizeChanged"
         />
         <Label Grid.Row="1"  Grid.Column="2" Grid.RowSpan="2"

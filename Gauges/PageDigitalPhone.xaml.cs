@@ -1,7 +1,4 @@
-﻿using System;
-
-
-namespace CVJoyMAUI
+﻿namespace CVJoyMAUI
 {
     public partial class PageDigitalPhone : ContentPage
     {
@@ -13,7 +10,7 @@ namespace CVJoyMAUI
 
         private void UdpReceiver_Updated(BaseUdpReceiver udpReceiver, Boolean extra)
         {
-            Device.BeginInvokeOnMainThread(() =>
+            (Application.Current as CVJoyMAUI.App).Dispatcher.Dispatch(() =>
             {
                 this.BatchBegin();
                 speed.Text = udpReceiver.Info.speed.ToString();
