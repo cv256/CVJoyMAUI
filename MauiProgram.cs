@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using CommunityToolkit.Mvvm.Messaging.Messages;
+using Microsoft.Extensions.Logging;
 
 namespace CVJoyMAUI
 {
@@ -21,5 +22,20 @@ namespace CVJoyMAUI
 
             return builder.Build();
         }
+    }
+}
+
+
+public class FullScreenMessage : ValueChangedMessage<object>
+{
+    public FullScreenMessage(object r) : base(r)
+    {
+    }
+}
+
+public class NormalScreenMessage : ValueChangedMessage<object>
+{
+    public NormalScreenMessage(object r) : base(r)
+    {
     }
 }

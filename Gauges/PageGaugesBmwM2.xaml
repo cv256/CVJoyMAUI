@@ -3,9 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CVJoyMAUI.PageGaugesBmwM2"
              NavigationPage.HasNavigationBar="false"
+             BackgroundColor="Black"
              Title="BMW M2">
 
-    <Grid BackgroundColor="#ff000000" RowSpacing="0" ColumnSpacing="0">
+    <Grid x:Name="Grid1" BackgroundColor="#ff000000" RowSpacing="0" ColumnSpacing="0" VerticalOptions="End" >
         <Grid.RowDefinitions>
             <RowDefinition Height="20*" /> <!--infos-->
             <RowDefinition Height="80*" /> <!-- gauges-->

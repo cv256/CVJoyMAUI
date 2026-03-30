@@ -3,9 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CVJoyMAUI.PageGaugesDiesel"
              NavigationPage.HasNavigationBar="false"
+             BackgroundColor="Black"
              Title="Gauges Diesel">
 
-    <Grid BackgroundColor="#ff000000" RowSpacing="0" ColumnSpacing="0">
+    <Grid x:Name="Grid1" BackgroundColor="#ff000000" RowSpacing="0" ColumnSpacing="0" VerticalOptions="End" >
         <Grid.RowDefinitions>
             <RowDefinition Height="10*" /> <!--infos-->
             <RowDefinition Height="30*" /> <!--gear-->

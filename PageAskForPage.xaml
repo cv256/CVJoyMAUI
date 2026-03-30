@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CVJoyMAUI.PageAskForPage"
+             NavigationPage.HasNavigationBar="false"
+             BackgroundColor="Black"
+             Title="CVJoy Ask For Page">
+    
+    <Grid BackgroundColor="#ff000000" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Button Grid.Row="0" Grid.Column="0" Clicked="Button_Clicked" Text="Button Box" VerticalOptions="Center" HorizontalOptions="Center" FontSize="Title" />
+        <Button Grid.Row="0" Grid.Column="1" Clicked="Button_Clicked" Text="Generic Digital" VerticalOptions="Center" HorizontalOptions="Center" FontSize="Title" />
+
+        <Button Grid.Row="1" Grid.Column="0" Clicked="Button_Clicked" Text="Generic Diesel" VerticalOptions="Center" HorizontalOptions="Center" FontSize="Title" />
+        <Button Grid.Row="1" Grid.Column="1" Clicked="Button_Clicked" Text="Generic Fast" VerticalOptions="Center" HorizontalOptions="Center" FontSize="Title" />
+
+        <Button Grid.Row="2" Grid.Column="0" Clicked="Button_Clicked" Text="Ford Focus 2015 diesel ( 240 / 5000 )" VerticalOptions="Center" HorizontalOptions="Center" FontSize="Title" />
+        <Button Grid.Row="2" Grid.Column="1" Clicked="Button_Clicked" Text="Ford Focus 2015 ( 220 / 6500 )" VerticalOptions="Center" HorizontalOptions="Center" FontSize="Title" />
+
+        <Button Grid.Row="3" Grid.Column="0" Clicked="Button_Clicked" Text="BMW M2  ( 300 / 8000 )" VerticalOptions="Center" HorizontalOptions="Center" FontSize="Title" />
+        <Button Grid.Row="3" Grid.Column="1" Clicked="Button_Clicked" Text="BMW M8 2020  ( 330 / 8000 )" VerticalOptions="Center" HorizontalOptions="Center" FontSize="Title" />
+
+        <Button Grid.Row="4" Grid.Column="0" Clicked="Button_Clicked" Text="Mercedes W124 1990  ( 260 / 7000 )" VerticalOptions="Center" HorizontalOptions="Center" FontSize="Title" />
+        <Button Grid.Row="4" Grid.Column="1" Clicked="Button_Clicked" Text="Mercedes S 2008  ( 260 / 7000 )" VerticalOptions="Center" HorizontalOptions="Center" FontSize="Title" />
+        <Button Grid.Row="5" Grid.Column="0" Clicked="Button_Clicked" Text="Mercedes S 2015  ( 260 / 8000 )" VerticalOptions="Center" HorizontalOptions="Center" FontSize="Title" />
+        <Button Grid.Row="5" Grid.Column="1" Clicked="Button_Clicked" Text="Mercedes AMG 2021  ( 360 / 8000 )" VerticalOptions="Center" HorizontalOptions="Center" FontSize="Title" />
+
+        <Button Grid.Row="6" Grid.Column="0" Clicked="Button_Clicked" Text="VW Polo  ( 240 / 5500 )" VerticalOptions="Center" HorizontalOptions="Center" FontSize="Title" />
+
+        <HorizontalStackLayout Grid.Row="7" Grid.Column="0"  VerticalOptions="Center" HorizontalOptions="Start" >
+            <Label  Text="Size:" VerticalOptions="Center"   TextColor="White"/>
+            <Entry  x:Name="txtWidth" Keyboard="Numeric"    TextColor="White"/>
+            <Label  Text="%   X" VerticalOptions="Center"      TextColor="White"/>
+            <Entry  x:Name="txtHeight" Keyboard="Numeric"    TextColor="White"/>
+            <Label  Text="%" VerticalOptions="Center"      TextColor="White" />
+        </HorizontalStackLayout>
+        <Label  x:Name="lbError" Grid.Row="7" Grid.Column="1" Text="" VerticalOptions="Center" HorizontalOptions="End" FontSize="Large" TextColor="Red"/>
+
+
+        <Button Grid.Row="8" Grid.Column="0" Clicked="Button_Clicked" Text="Debug" VerticalOptions="Center" HorizontalOptions="Center" FontSize="Title" />
+
+    </Grid>
+
+</ContentPage>

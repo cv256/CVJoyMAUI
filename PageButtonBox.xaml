@@ -2,9 +2,11 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CVJoyMAUI.PageButtonBox"
-             NavigationPage.HasNavigationBar="true"
+             NavigationPage.HasNavigationBar="false"
+             BackgroundColor="Black"
              Title="CVJoy Button Box">
-    <Grid x:Name="grid1" BackgroundColor="#ff000000" RowSpacing="15" ColumnSpacing="15">
+
+    <Grid x:Name="Grid1" BackgroundColor="#ff000000" RowSpacing="15" ColumnSpacing="15" VerticalOptions="End" >
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>

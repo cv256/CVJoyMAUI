@@ -3,22 +3,23 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CVJoyMAUI.PageGaugeProps"
              NavigationPage.HasNavigationBar="false"
+             BackgroundColor="White"
              Title="CVJoy Gauge Props"
              WidthRequest="200"
              >
 
     <StackLayout>
         
-        <TableView Intent="Settings">
+        <TableView Intent="Settings" >
             <TableRoot>
-                <TableSection Title="Gauge Props">
-                    <EntryCell x:Name="lbvalueMin" Label="Value Min" Keyboard="Numeric"  />
-                    <EntryCell x:Name="lbvalueRedLine" Label="Value RedLine"  Keyboard="Numeric" />
-                    <EntryCell x:Name="lbvalueMax" Label="Value Max"  Keyboard="Numeric" />
-                    <EntryCell x:Name="lbangleMin" Label="Angle Min"  Keyboard="Numeric" />
-                    <EntryCell x:Name="lbangleMax" Label="Angle Max"  Keyboard="Numeric" />
-                    <EntryCell x:Name="lbneedleWidth" Label="Needle Width"  Keyboard="Numeric" />
-                    <EntryCell x:Name="lbneedleValue" Label="Needle Value"  Text="0" Keyboard="Numeric" />
+                <TableSection Title="Gauge Props" >
+                    <EntryCell x:Name="lbvalueMin" Label="Value Min" Keyboard="Numeric"  LabelColor="Black"/>
+                    <EntryCell x:Name="lbvalueRedLine" Label="Value RedLine"  Keyboard="Numeric" LabelColor="Black"/>
+                    <EntryCell x:Name="lbvalueMax" Label="Value Max"  Keyboard="Numeric" LabelColor="Black"/>
+                    <EntryCell x:Name="lbangleMin" Label="Angle Min"  Keyboard="Numeric" LabelColor="Black"/>
+                    <EntryCell x:Name="lbangleMax" Label="Angle Max"  Keyboard="Numeric" LabelColor="Black"/>
+                    <EntryCell x:Name="lbneedleWidth" Label="Needle Width"  Keyboard="Numeric" LabelColor="Black"/>
+                    <EntryCell x:Name="lbneedleValue" Label="Needle Value"  Text="0" Keyboard="Numeric" LabelColor="Black"/>
                 </TableSection>
             </TableRoot>
         </TableView>

@@ -1,4 +1,6 @@
-﻿namespace CVJoyMAUI
+﻿using CommunityToolkit.Mvvm.Messaging;
+
+namespace CVJoyMAUI
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PageGaugesBmwM8_2020 : ContentPage
@@ -10,12 +12,23 @@
         public PageGaugesBmwM8_2020()
         {
             InitializeComponent();
+            this.Loaded += Page_Loaded;
 
             speedGauge = new Gauge(speedAbsolute);
             rpmGauge = new Gauge(rpmAbsolute);
             pedals = new Pedals(gridPedals,false);
 
             (Application.Current as CVJoyMAUI.App).udpReceiver.Updated += UdpReceiver_Updated;
+        }
+        private void Page_Loaded(object? sender, EventArgs e)
+        {
+            Grid1.WidthRequest = Window.Width * (Application.Current as CVJoyMAUI.App).WidthPercentage / 100; // DeviceDisplay.MainDisplayInfo.Width / Height 
+            Grid1.HeightRequest = Window.Height * (Application.Current as CVJoyMAUI.App).HeightPercentage / 100;
+        }
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            WeakReferenceMessenger.Default.Send(new FullScreenMessage("HideOsNavigationBar"));
         }
 
         private void UdpReceiver_Updated(BaseUdpReceiver udpReceiver, Boolean extra)

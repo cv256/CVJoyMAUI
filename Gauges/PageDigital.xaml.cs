@@ -1,4 +1,6 @@
-﻿namespace CVJoyMAUI
+﻿using CommunityToolkit.Mvvm.Messaging;
+
+namespace CVJoyMAUI
 {
     public partial class PageDigital : ContentPage
     {
@@ -7,10 +9,22 @@
         public PageDigital() // just for the designer preview
         {
             InitializeComponent();
+            this.Loaded += Page_Loaded;
 
             pedals = new Pedals(gridPedals, true);
 
             (Application.Current as CVJoyMAUI.App).udpReceiver.Updated += UdpReceiver_Updated;
+        }
+        private void Page_Loaded(object? sender, EventArgs e)
+        {
+            Grid1.WidthRequest = Window.Width * (Application.Current as CVJoyMAUI.App).WidthPercentage / 100; // DeviceDisplay.MainDisplayInfo.Width / Height 
+            Grid1.HeightRequest = Window.Height * (Application.Current as CVJoyMAUI.App).HeightPercentage / 100;
+            speed.FontSize = 230 * Math.Min(  (Application.Current as CVJoyMAUI.App).WidthPercentage, (Application.Current as CVJoyMAUI.App).HeightPercentage )/ 100;
+        }
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            WeakReferenceMessenger.Default.Send(new FullScreenMessage("HideOsNavigationBar"));
         }
 
         private void UdpReceiver_Updated(BaseUdpReceiver udpReceiver, Boolean extra)
@@ -56,10 +70,13 @@
             });
         }
 
+
         private void Button_Clicked(object sender, EventArgs e)
         {
             (Application.Current as CVJoyMAUI.App).udpReceiver.Updated -= UdpReceiver_Updated;
             (Application.Current as CVJoyMAUI.App).AskForPage();
         }
+
     }
+
 }

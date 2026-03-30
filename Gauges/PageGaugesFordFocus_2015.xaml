@@ -3,9 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CVJoyMAUI.PageGaugesFordFocus_2015"
              NavigationPage.HasNavigationBar="false"
+             BackgroundColor="Black"
              Title="Ford Focus 2015">
 
-    <Grid BackgroundColor="#ff000000" RowSpacing="0" ColumnSpacing="0">
+    <Grid x:Name="Grid1" BackgroundColor="#ff000000" RowSpacing="0" ColumnSpacing="0" VerticalOptions="End" >
         <Grid.RowDefinitions>
             <RowDefinition Height="39*" /> <!--infos-->
             <RowDefinition Height="61*" /> <!-- gauges-->

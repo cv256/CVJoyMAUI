@@ -1,11 +1,25 @@
-﻿namespace CVJoyMAUI
+﻿using CommunityToolkit.Mvvm.Messaging;
+
+namespace CVJoyMAUI
 {
     public partial class PageDigitalPhone : ContentPage
     {
         public PageDigitalPhone() // just for the designer preview
         {
             InitializeComponent();
+            this.Loaded += Page_Loaded;
+
             (Application.Current as CVJoyMAUI.App).udpReceiver.Updated += UdpReceiver_Updated;
+        }
+        private void Page_Loaded(object? sender, EventArgs e)
+        {
+            Grid1.WidthRequest = Window.Width * (Application.Current as CVJoyMAUI.App).WidthPercentage / 100; // DeviceDisplay.MainDisplayInfo.Width / Height 
+            Grid1.HeightRequest = Window.Height * (Application.Current as CVJoyMAUI.App).HeightPercentage / 100;
+        }
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            WeakReferenceMessenger.Default.Send(new FullScreenMessage("HideOsNavigationBar"));
         }
 
         private void UdpReceiver_Updated(BaseUdpReceiver udpReceiver, Boolean extra)

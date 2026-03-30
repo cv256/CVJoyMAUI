@@ -7,6 +7,7 @@
         public PageButtonBox()
         {
             InitializeComponent();
+            this.Loaded += Page_Loaded;
 
             string[] confs = (Application.Current as CVJoyMAUI.App).ButtonboxConfiguration.Split('|');
             int rows = -1; int columns = -1;
@@ -22,11 +23,11 @@
 
             for (int i = 0; i < rows; i++)
             {
-                grid1.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Star) });
+                Grid1.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Star) });
             }
             for (int i = 0; i < columns; i++)
             {
-                grid1.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
+                Grid1.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
             }
             foreach (string x in confs)
             {
@@ -50,11 +51,16 @@
                 }; // <Button Text="Calibrate"  Grid.Row="0" Grid.Column="4"   ContentLayout="Top,-2" Padding="0,-17,0,0"    FontSize="28" FontAttributes="Bold" ImageSource="steer.png" BackgroundColor = "LightSteelBlue" BorderColor = "DarkBlue" BorderWidth=" 9" CornerRadius="20" />
                 b.Pressed += Pressed;
                 b.Released += Released;
-                grid1.Add(b, pColumn, pRow);
+                Grid1.Add(b, pColumn, pRow);
             }
 
             Grid.SetRow(button1, 2);
             Grid.SetColumn(button1, 4);
+        }
+        private void Page_Loaded(object? sender, EventArgs e)
+        {
+            Grid1.WidthRequest = Window.Width * (Application.Current as CVJoyMAUI.App).WidthPercentage / 100; // DeviceDisplay.MainDisplayInfo.Width / Height 
+            Grid1.HeightRequest = Window.Height * (Application.Current as CVJoyMAUI.App).HeightPercentage / 100;
         }
 
         private void Pressed(object? sender, EventArgs e)
