@@ -8,13 +8,13 @@
 
     <Grid x:Name="Grid1" BackgroundColor="#ff000000" RowSpacing="0" ColumnSpacing="0" VerticalOptions="End" >
         <Grid.RowDefinitions>
-            <RowDefinition Height="33*" /> <!--infos-->
-            <RowDefinition Height="67*" /> <!-- gauges-->
+            <RowDefinition Height="*" /> <!--infos-->
+            <RowDefinition Height="Auto" /> <!-- gauges-->
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="40*" />
-            <ColumnDefinition Width="20*" />
-            <ColumnDefinition Width="40*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
         <!-- IMG: -->
@@ -25,7 +25,7 @@
                />
 
         <!-- SPEED : -->
-        <AbsoluteLayout Grid.Row="1"  Grid.Column="0" Margin="170,70,-110,40"
+        <AbsoluteLayout Grid.Row="0"  Grid.Column="0" Margin="140,30,-180,40" Grid.RowSpan="3" 
                  x:Name="speedAbsolute"
                  VerticalOptions="FillAndExpand"
                  HorizontalOptions ="FillAndExpand"
@@ -33,7 +33,7 @@
         />
 
         <!-- RPM : -->
-        <AbsoluteLayout  Grid.Row="1"  Grid.Column="2" Margin="-340,25,110,40"
+        <AbsoluteLayout  Grid.Row="0"  Grid.Column="2" Margin="-250,30,110,40" Grid.RowSpan="3" 
                  x:Name="rpmAbsolute"
                  VerticalOptions="FillAndExpand"
                  HorizontalOptions ="FillAndExpand"                
@@ -41,7 +41,7 @@
         />
 
         <!-- GEAR : -->
-        <Label Grid.Row="1"  Grid.Column="1" Margin="0,78,0,0"
+        <Label Grid.Row="0"  Grid.Column="1" Margin="0,40,0,0"
                x:Name="gear"
                Text="N"
                TextColor="White"
@@ -50,7 +50,7 @@
                HorizontalOptions="Center"
                VerticalOptions="Start" />
         <!-- GearAuto : -->
-        <Label Grid.Row="1"  Grid.Column="1" Margin="0,192,0,0"
+        <Label Grid.Row="0"  Grid.Column="1" Margin="0,160,0,0"
                x:Name="lbGearAuto"
                Text="Manual"
                TextColor="White"
@@ -60,7 +60,7 @@
 
 
         <!-- PEDALS : -->
-        <Grid x:Name="gridPedals" Grid.Row="1" Grid.Column="1" RowSpacing="0" ColumnSpacing="8" Margin="0,240,0,0" HorizontalOptions="Center">
+        <Grid x:Name="gridPedals" Grid.Row="0"  Grid.Column="1" RowSpacing="0" ColumnSpacing="8" Margin="0,200,0,0" HorizontalOptions="Center" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="11" />
                 <ColumnDefinition Width="1" />

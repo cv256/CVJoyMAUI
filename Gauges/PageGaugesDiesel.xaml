@@ -143,7 +143,7 @@
                  x:Name="rpmText"
                 Text="0000"
                 TextColor="#ffffffff"
-                FontSize="95"
+                FontSize="70"
                 FontAttributes="Bold"
                 HorizontalOptions="Center"
                 VerticalOptions="End"
@@ -158,7 +158,7 @@
                  x:Name="speedText"
                 Text="000"
                 TextColor="#ffffffff"
-                FontSize="95"
+                FontSize="70"
                 FontAttributes="Bold"
                 HorizontalOptions="Center"
                 VerticalOptions="End"
@@ -166,19 +166,19 @@
 
 
         <!-- GEAR : -->
-        <Label Grid.Row="1"  Grid.Column="1" Margin="0" Padding="0"
+        <Label Grid.Row="1"  Grid.Column="1" Margin="0,0,0,0" Padding="0"
                x:Name="gearAuto"
                Text="Manual"
-               TextColor="#ff80c0ff"
+               TextColor="White"
                FontSize="30"
                HorizontalOptions="Center"
                VerticalOptions="Start"
                />
-        <Label Grid.Row="1"  Grid.Column="1"
+        <Label Grid.Row="1"  Grid.Column="1" Margin="0,10,0,0" 
                x:Name="gear"
                Text="N"
                TextColor="White"
-               FontSize="130"
+               FontSize="100"
                FontAttributes="Bold"
                HorizontalOptions="CenterAndExpand"
                VerticalOptions="CenterAndExpand" />

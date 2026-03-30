@@ -22,8 +22,8 @@ namespace CVJoyMAUI
         }
         private void Page_Loaded(object? sender, EventArgs e)
         {
-            Grid1.WidthRequest = Window.Width * (Application.Current as CVJoyMAUI.App).WidthPercentage / 100; // DeviceDisplay.MainDisplayInfo.Width / Height 
-            Grid1.HeightRequest = Window.Height * (Application.Current as CVJoyMAUI.App).HeightPercentage / 100;
+            Grid1.WidthRequest = Window.Width * (Application.Current as CVJoyMAUI.App).WidthPercentage / 100d; // DeviceDisplay.MainDisplayInfo.Width / Height 
+            Grid1.HeightRequest = Window.Height * (Application.Current as CVJoyMAUI.App).HeightPercentage / 100d;
         }
         protected override void OnAppearing()
         {
@@ -83,13 +83,13 @@ namespace CVJoyMAUI
 
         private void speedAbsolute_SizeChanged(object sender, EventArgs e)
         {
-            speedGauge.Init(0, 9999, 300,
+            speedGauge.Init(0, 9999, 330,
                 Colors.Transparent,
                 Colors.Transparent,
                 Colors.Transparent,
                 Colors.White,
                 7,
-                -143, 0, Gauge.enumGaugeRadiusSize.Fit,
+                -146, 30, Gauge.enumGaugeRadiusSize.Fit,
                 Colors.White);
         }
 

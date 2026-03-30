@@ -12,8 +12,9 @@
             <RowDefinition Height="90*" /> <!-- gauges-->
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="63*" />
-            <ColumnDefinition Width="37*" />
+            <ColumnDefinition Width="50*" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="50*" />
         </Grid.ColumnDefinitions>
 
         <!-- TYRES SLIP: -->
@@ -23,7 +24,7 @@
             HorizontalOptions="Start" 
             VerticalOptions="Start" 
              Color="Red" />
-        <BoxView x:Name="slipFR" Grid.Row="0"  Grid.Column="1"  Grid.RowSpan="2"
+        <BoxView x:Name="slipFR" Grid.Row="0"  Grid.Column="2"  Grid.RowSpan="2"
             WidthRequest="170"
             HeightRequest="170"
             HorizontalOptions="End" 
@@ -35,7 +36,7 @@
             HorizontalOptions="Start" 
             VerticalOptions="End" 
              Color="Red" />
-        <BoxView x:Name="slipRR" Grid.Row="1"  Grid.Column="1" 
+        <BoxView x:Name="slipRR" Grid.Row="1"  Grid.Column="2" 
             WidthRequest="170"
             HeightRequest="170"
             HorizontalOptions="End" 
@@ -135,30 +136,30 @@
 
 
         <!-- RPM : -->
-        <AbsoluteLayout  Grid.Row="1"  Grid.Column="0"
+        <AbsoluteLayout  Grid.Row="1"  Grid.Column="0" VerticalOptions="Start"
                  x:Name="rpmAbsolute"
                  SizeChanged="rpmAbsolute_SizeChanged"
         />
 
         <!-- SPEED : -->
-        <AbsoluteLayout Grid.Row="1"  Grid.Column="1"
+        <AbsoluteLayout Grid.Row="1"  Grid.Column="2" VerticalOptions="Start"
                  x:Name="speedAbsolute"
                  SizeChanged="speedAbsolute_SizeChanged"                        
         />
 
         <!-- GEAR : -->
-        <Label Grid.Row="1"  Grid.Column="0"
+        <Label Grid.Row="1"  Grid.Column="1"
                x:Name="gear"
                Text="N"
                TextColor="White"
                FontSize="85"
                FontAttributes="Bold"
-               HorizontalOptions="End"
+               HorizontalOptions="Center"
                VerticalOptions="Start" />
 
 
         <!-- PEDALS : -->
-        <Grid x:Name="gridPedals" Grid.Row="1"  Grid.Column="1" RowSpacing="0" ColumnSpacing="4" Margin="11,130,0,0">
+        <Grid x:Name="gridPedals" Grid.Row="1"  Grid.Column="1" RowSpacing="0" ColumnSpacing="4" Margin="0,130,0,0" HorizontalOptions="Center">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="4" />
                 <ColumnDefinition Width="1" />
@@ -219,11 +220,11 @@
                 />
         </Grid>
 
-        <ImageButton Grid.Row="1"  Grid.Column="1"  Margin="50,2,0,0"
+        <ImageButton Grid.Row="1"  Grid.Column="2"  
                 Clicked="Button_Clicked"
                 Source="dashlights.png"
-                VerticalOptions="Center"
-                HorizontalOptions="Start"
+                VerticalOptions="End"
+                HorizontalOptions="Center"
                 />
 
     </Grid>

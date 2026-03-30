@@ -6,7 +6,7 @@
              BackgroundColor="Black"
              Title="CVJoy Button Box">
 
-    <Grid x:Name="Grid1" BackgroundColor="#ff000000" RowSpacing="15" ColumnSpacing="15" VerticalOptions="End" >
+    <Grid x:Name="Grid1" BackgroundColor="#ff000000" RowSpacing="1" ColumnSpacing="10" VerticalOptions="End" >
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>

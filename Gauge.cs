@@ -167,19 +167,22 @@ namespace CVJoyMAUI
 
         private void drawCircle(Point center, Double radius, int pAngleMin, int pAngleMax, int pValueMin, int pValueMax, Color ticks1Color, Color ticks2Color, Color ticks3Color)
         {
-            int valueBigStep;
+            double valueBigStep;
             double degreesPerVal = (double)(pAngleMax - pAngleMin) / (double)(pValueMax - pValueMin);
-            if (degreesPerVal < .8)
+            if (pValueMax >= 700) // RPM:
             {
                 valueBigStep = 1000;
             }
-            else if (degreesPerVal < 1.6)
+            else // Speed:
             {
-                valueBigStep = 20;
-            }
-            else
-            {
-                valueBigStep = 10;
+                if (degreesPerVal < 1.6)
+                {
+                    valueBigStep = 20;
+                }
+                else
+                {
+                    valueBigStep = 10;
+                }
             }
 
             Double bigStepsCount = (pValueMax - pValueMin) / valueBigStep;
@@ -278,7 +281,7 @@ namespace CVJoyMAUI
                     }
                 }
 
-                value += valueBigStep;
+                value += (int)valueBigStep;
             }
 
 

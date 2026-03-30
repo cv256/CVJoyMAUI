@@ -6,7 +6,7 @@
              BackgroundColor="Black"
              Title="CVJoy Debug">
     
-    <Grid BackgroundColor="#ff000000" RowSpacing="0" ColumnSpacing="0" VerticalOptions="End" >
+    <Grid BackgroundColor="Red" RowSpacing="0" ColumnSpacing="0" VerticalOptions="End" >
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>

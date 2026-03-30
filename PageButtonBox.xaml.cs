@@ -49,6 +49,7 @@
                     ContentLayout = new Button.ButtonContentLayout(Button.ButtonContentLayout.ImagePosition.Top, -2),
                     ImageSource = conf[4]
                 }; // <Button Text="Calibrate"  Grid.Row="0" Grid.Column="4"   ContentLayout="Top,-2" Padding="0,-17,0,0"    FontSize="28" FontAttributes="Bold" ImageSource="steer.png" BackgroundColor = "LightSteelBlue" BorderColor = "DarkBlue" BorderWidth=" 9" CornerRadius="20" />
+                //b.Scale = Math.Min((Application.Current as CVJoyMAUI.App).WidthPercentage, (Application.Current as CVJoyMAUI.App).HeightPercentage) / 100d;
                 b.Pressed += Pressed;
                 b.Released += Released;
                 Grid1.Add(b, pColumn, pRow);
@@ -59,8 +60,8 @@
         }
         private void Page_Loaded(object? sender, EventArgs e)
         {
-            Grid1.WidthRequest = Window.Width * (Application.Current as CVJoyMAUI.App).WidthPercentage / 100; // DeviceDisplay.MainDisplayInfo.Width / Height 
-            Grid1.HeightRequest = Window.Height * (Application.Current as CVJoyMAUI.App).HeightPercentage / 100;
+            Grid1.WidthRequest = Window.Width * (Application.Current as CVJoyMAUI.App).WidthPercentage / 100d; // DeviceDisplay.MainDisplayInfo.Width / Height 
+            Grid1.HeightRequest = Window.Height * (Application.Current as CVJoyMAUI.App).HeightPercentage / 100d;
         }
 
         private void Pressed(object? sender, EventArgs e)

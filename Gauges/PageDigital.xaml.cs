@@ -17,9 +17,9 @@ namespace CVJoyMAUI
         }
         private void Page_Loaded(object? sender, EventArgs e)
         {
-            Grid1.WidthRequest = Window.Width * (Application.Current as CVJoyMAUI.App).WidthPercentage / 100; // DeviceDisplay.MainDisplayInfo.Width / Height 
-            Grid1.HeightRequest = Window.Height * (Application.Current as CVJoyMAUI.App).HeightPercentage / 100;
-            speed.FontSize = 230 * Math.Min(  (Application.Current as CVJoyMAUI.App).WidthPercentage, (Application.Current as CVJoyMAUI.App).HeightPercentage )/ 100;
+            Grid1.WidthRequest = Window.Width * (Application.Current as CVJoyMAUI.App).WidthPercentage / 100d; // DeviceDisplay.MainDisplayInfo.Width / Height 
+            Grid1.HeightRequest = Window.Height * (Application.Current as CVJoyMAUI.App).HeightPercentage / 100d;
+            speed.FontSize = 230 * Math.Min(  (Application.Current as CVJoyMAUI.App).WidthPercentage, (Application.Current as CVJoyMAUI.App).HeightPercentage )/ 100d;
         }
         protected override void OnAppearing()
         {

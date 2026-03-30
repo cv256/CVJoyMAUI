@@ -8,7 +8,7 @@
              WidthRequest="200"
              >
 
-    <StackLayout>
+    <StackLayout BackgroundColor="Red">
         
         <TableView Intent="Settings" >
             <TableRoot>

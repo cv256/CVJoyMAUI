@@ -163,10 +163,10 @@ public class BaseUdpReceiver
                     Info.gear = (Convert.ToUInt16(recvBuffer[5]) - 2).ToString();
                     break;
             }
-            Info.slipFL = FromArgb(recvBuffer[6], 0, 0, 0);
-            Info.slipFR = FromArgb(recvBuffer[7], 0, 0, 0);
-            Info.slipRL = FromArgb(recvBuffer[8], 0, 0, 0);
-            Info.slipRR = FromArgb(recvBuffer[9], 0, 0, 0);
+            Info.slipFL = FromArgb(recvBuffer[6], 255, 0, 0);
+            Info.slipFR = FromArgb(recvBuffer[7], 255, 0, 0);
+            Info.slipRL = FromArgb(recvBuffer[8], 255, 0, 0);
+            Info.slipRR = FromArgb(recvBuffer[9], 255, 0, 0);
             Info.gearAuto = (recvBuffer[10] & 1) > 0;
             Info.dirtFL = FromArgb(recvBuffer[11], 128, 128, 128);
             Info.dirtFR = FromArgb(recvBuffer[12], 128, 128, 128);

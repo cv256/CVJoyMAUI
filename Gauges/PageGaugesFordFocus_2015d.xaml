@@ -48,7 +48,7 @@
             <ImageButton AbsoluteLayout.LayoutBounds="0.58 , 0.355, AutoSize, AutoSize" AbsoluteLayout.LayoutFlags="PositionProportional" Clicked="Button_Clicked" Source="dashlights.png"/>
 
             <!-- RPM : -->
-            <AbsoluteLayout x:Name="rpmAbsolute" AbsoluteLayout.LayoutBounds="0.14 , 0.59, .24, .69" AbsoluteLayout.LayoutFlags="All" SizeChanged="rpmAbsolute_SizeChanged" />
+            <AbsoluteLayout x:Name="rpmAbsolute" AbsoluteLayout.LayoutBounds="0.14 , 0.62, .24, .69" AbsoluteLayout.LayoutFlags="All" SizeChanged="rpmAbsolute_SizeChanged" />
 
             <!-- SPEED : -->
             <AbsoluteLayout x:Name="speedAbsolute" AbsoluteLayout.LayoutBounds="0.855 , 0.59, .24, .69" AbsoluteLayout.LayoutFlags="All" SizeChanged="speedAbsolute_SizeChanged" />
